@@ -26,3 +26,9 @@
 
 
 <h3  align="center" id="cmake">Steps to obtain PhysFS .dll</h3>
+
+1. Download PhysicsFS ZIP from icculus.org. If you want to download the file directly, <a href="https://icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2">click here</a>.
+
+2. Download CMake. I recommend the version with interface since it is more intuitive and is the one that I will explain next. If you want to download it directly, <a href="https://github.com/Kitware/CMake/releases/download/v3.17.0/cmake-3.17.0-win64-x64.msi">click here</a>.
+
+3. Install CMake and open "CMake (cmake-gui)" executable
