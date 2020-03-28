@@ -17,12 +17,12 @@
 
 <h3  align="center" id="cmake">CMake</h3>
 
-<p align="justify">CMake is a multiplatform code generation or automation tool. The name is an abbreviation for "cross platform brand"; Beyond the use of "make" in the name, CMake is a separate, higher-level suite that the system makes common to Unix, being similar to automated tools.
+<p align="justify">CMake is a multiplatform code generation or automation tool. The name is an abbreviation for "cross platform brand"; Beyond the use of "make" in the name, CMake is a separate, higher-level suite that the system makes common to Unix, being similar to automated tools.</p>
 
-It is an extensible, open-source system that manages the build process in an operating system and in a compiler-independent manner. Unlike many cross-platform systems, CMake is designed to be used in conjunction with the native build environment. Simple configuration files placed in each source directory (called CMakeLists.txt files) are used to generate standard build files (e.g., makefiles on Unix and projects/workspaces in Windows MSVC) which are used in the usual way. CMake can generate a native build environment that will compile source code, create libraries, generate wrappers and build executables in arbitrary combinations.
+<p align="justify">It is an extensible, open-source system that manages the build process in an operating system and in a compiler-independent manner. Unlike many cross-platform systems, CMake is designed to be used in conjunction with the native build environment. Simple configuration files placed in each source directory (called CMakeLists.txt files) are used to generate standard build files (e.g., makefiles on Unix and projects/workspaces in Windows MSVC) which are used in the usual way. CMake can generate a native build environment that will compile source code, create libraries, generate wrappers and build executables in arbitrary combinations.</p>
 
-We will need CMake to carry out a PhysFS build, obtaining the libraries and .dll that we need to implement it in our project.
-</p>
+<p align="justify">We will need CMake to carry out a PhysFS build, obtaining the libraries and .dll that we need to implement it in our project.</p>
+
 
 
 <h3  align="center" id="cmake">Steps to obtain PhysFS .dll</h3>
