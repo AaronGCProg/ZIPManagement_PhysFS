@@ -31,19 +31,34 @@
 
 1. Download PhysicsFS ZIP from icculus.org. If you want to download the file directly, <a href="https://icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2">click here</a>.
 
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step1.JPG" class="center">
+
 2. Download CMake. I recommend the version with interface since it is more intuitive and is the one that I will explain next. If you want to download it directly, <a href="https://github.com/Kitware/CMake/releases/download/v3.17.0/cmake-3.17.0-win64-x64.msi">click here</a>.
+
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step2.JPG" class="center">
 
 3. Install CMake and open "CMake (cmake-gui)" executable. Check where CMakeLists.txt is in the downloaded PhysicsFS folder 
 (In this case it is the base folder) and get this path to <b>the source code</b> field. To <b>build the binaries</b> you can create any empty folder.
 
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step3.JPG" class="center">
+
 4. Click configure and set-up the following options with your Visual Studio version and if you will use x64 or x86. 
+
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step5.JPG" class="center">
 
 5. Once we have finished the previous window, the following options will be generated. We must discard them all except PHYSFS_BUILD_SHARED and in this case, PHYSFS_ARCHIVE_ZIP. Then, click Generate.
 
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step6.JPG" class="center">
+
 6. This files will be generated. We will need to run the file PhysicsFS.sln and then prepare a build in Release and Win32.
+
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step7.JPG" class="center">
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step7_2.JPG" class="center">
 
 7. In the generated Release folder we will have everything you want. You will find the physfs.h in the following path of the folder you originally download.
 
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step8.JPG" class="center">
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step8_2.JPG" class="center">
 
 <h2  align="center" id="exercises">Exercises</h2>
 
