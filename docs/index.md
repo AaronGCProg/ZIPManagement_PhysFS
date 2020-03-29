@@ -58,6 +58,5 @@ TODO 1:
   <li> Pugui Loading from Memory : <a href="https://pugixml.org/docs/manual.html#loading.memory">https://pugixml.org/docs/manual.html#loading.memory/</a></li>  
   <li> CMake Building : <a href="https://preshing.com/20170511/how-to-build-a-cmake-based-project/#running-cmake-gui">https://preshing.com/20170511/how-to-build-a-cmake-based-project/#running-cmake-gui</a></li>
   <li> SDL_RWops and Related Functions : <a href="https://wiki.libsdl.org/SDL_RWops">https://wiki.libsdl.org/SDL_RWops</a></li>  
-  <li> PhysicsFS : <a href="https://icculus.org/physfs/">https://icculus.org/physfs/</a></li> 
   <li> Buffers usefull stuff : <a href="https://www.quora.com/What-is-the-difference-between-declaring-a-variable-as-char-*buffer-and-char-**buffer-in-the-C-programming-language">https://www.quora.com/What-is-the-diff. . .</a></li>  
 </ul>
