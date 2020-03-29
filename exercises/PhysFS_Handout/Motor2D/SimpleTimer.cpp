@@ -14,8 +14,7 @@ SimpleTimer::SimpleTimer()
 }
 
 
-// TODO 1: Fill Start(), Read(), ReadSec() methods
-	// they are simple, one line each!
+
 // ---------------------------------------------
 void SimpleTimer::Start()
 {

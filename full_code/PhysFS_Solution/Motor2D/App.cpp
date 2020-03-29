@@ -173,11 +173,11 @@ void App::PrepareUpdate()
 	frameCount++;
 	lastSecFrameCount++;
 
-	// TODO 4: Calculate the dt: differential time since last frame
+	
 	dt = frameTime.ReadSec() * TIME_CONST;
 
 
-	//just to when we debug, the player doesnt trespass the floor
+
 	if (dt > MAX_DT)
 		dt = MAX_DT;
 
