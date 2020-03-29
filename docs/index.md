@@ -96,6 +96,7 @@
 	PHYSFS_deinit();
 	
 	}
+	
 </code>
 
 <h4  align="left" id="TODO">TODO 2:</h4>
@@ -228,6 +229,7 @@
 	return ret;
 
 	}
+	
 </code>
 
 <h4  align="left" id="TODO">TODO 6:</h4>
@@ -235,17 +237,21 @@
 <code>
 	
  	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
+	
 	// Reads from the memory buffer thanks to SDL_RWops
 	SDL_Surface* surface = IMG_Load_RW(app->assetManager->Load(path), 1);
 	
 
  	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
+	
 	// Reads from the memory buffer thanks to SDL_RWops
 	music = Mix_LoadMUS_RW(app->assetManager->Load(path), 1);
 
  	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
+	
 	// Reads from the memory buffer thanks to SDL_RWops
 	Mix_Chunk* chunk = Mix_LoadWAV_RW(app->assetManager->Load(path), 1);
+	
 </code>
 
 <h2  align="center" id="bibliography">Bibliography</h2>
