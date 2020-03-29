@@ -64,8 +64,10 @@
 <h4  align="left" id="TODO">TODO 0 & TODO 1:</h4>
 
 <code>
- ModuleAssetsManager::ModuleAssetsManager() : Module()
-{
+	
+	 ModuleAssetsManager::ModuleAssetsManager() : Module()
+	{
+	
 	name = ("assetsManager");
 
 	// TODO 0 (Solved): Open the following link and check it: https://icculus.org/physfs/docs/html/physfs_8h.html
@@ -78,26 +80,32 @@
 
 	// We only need this when compiling in debug. In Release we don't need it.
 	PHYSFS_mount(".", nullptr, 1);
-}
+	}
 
-</code>
 
-<code>
-ModuleAssetsManager::~ModuleAssetsManager()
-{
+
+	ModuleAssetsManager::~ModuleAssetsManager()
+	{
+	
 	// Deinitialize the PhysicsFS library.
-	// This closes any files opened via PhysicsFS, blanks the search/write paths, frees memory, and invalidates all of your file handles.
+	
+	// This closes any files opened via PhysicsFS, blanks the search/write paths, frees memory, and invalidates all of your file 		handles.
+	
 	// NOTE: This call can FAIL if there's a file open for writing that refuses to close
+	
 	PHYSFS_deinit();
-}
+	
+	}
 </code>
 
 <h4  align="left" id="TODO">TODO 2:</h4>
 
 <code>
-bool ModuleAssetsManager::Awake(pugi::xml_node& config)
-{
+	
+	bool ModuleAssetsManager::Awake(pugi::xml_node& config)
+	{
 	// Determine if the PhysicsFS library is initialized, we can check it for avoid errors.
+	
 	if(PHYSFS_isInit())
 		LOG("Asset Manager is succefully loaded");
 	else
@@ -112,30 +120,33 @@ bool ModuleAssetsManager::Awake(pugi::xml_node& config)
 	PHYSFS_mount("Assets.zip", nullptr, 1);
 
 	return true;
-}
+	}
  
 </code>
 
 <h4  align="left" id="TODO">TODO 3:</h4>
 
 <code>
-uint ModuleAssetsManager::Load(const char* path, char** buffer) const
-{
+	
+	uint ModuleAssetsManager::Load(const char* path, char** buffer) const
+	{
 	uint ret;
-
+	
 	// TODO 3 (Solved): You want to return the number of bytes it has read from the file that we passed to this function. 
+	
 	// Maybe you want to search readBytes in the documentation, and investigate from there how to build the function.
 
 	// The reading offset is set to the first byte of the file.
+	
 	// Returns a filehandle on success that we will need for the PHYSFS_fileLength
+	
 	PHYSFS_file* file = PHYSFS_openRead(path); 
 
-</code>
-
-<code>
 	// Check for end-of-file state on a PhysicsFS filehandle.
+	
 	if (!PHYSFS_eof(file))
 	{
+	
 		// Get total length of a file in bytes
 		uint lenght = PHYSFS_fileLength(file); 
 		*buffer = new char[lenght]; 
@@ -156,20 +167,21 @@ uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 
 
 	// Close a PhysicsFS firehandle
+	
 	PHYSFS_close(file);
 
 	return ret;
-}
+	}
+
 </code>
 
 <h4  align="left" id="TODO">TODO 4:</h4>
 
 <code>
   
-  bool ModuleScene::Start()
-{
-
-	// TODO 4 (Solved): Uncomment all of this and resolve how to load the document from the memory with the link below.
+  	bool ModuleScene::Start() 
+  	{ 
+ 	// TODO 4 (Solved): Uncomment all of this and resolve how to load the document from the memory with the link below.
 
 	if (!PHYSFS_exists("data.xml"))
 		return false;
@@ -193,15 +205,16 @@ uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 	LoadMusFile(dataFile);
 
 	return true;
-}
+	}
   
 </code>
 
 <h4  align="left" id="TODO">TODO 5:</h4>
+
 <code>
   
-  SDL_RWops* ModuleAssetsManager::Load(const char* path) const
-{
+  	SDL_RWops* ModuleAssetsManager::Load(const char* path) const
+	{
 	char* buffer;
 	uint bytes = Load(path, &buffer);
 
@@ -214,25 +227,23 @@ uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 
 	return ret;
 
-}
-  
+	}
 </code>
 
 <h4  align="left" id="TODO">TODO 6:</h4>
+
 <code>
- 	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is working now.
+	
+ 	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
 	// Reads from the memory buffer thanks to SDL_RWops
 	SDL_Surface* surface = IMG_Load_RW(app->assetManager->Load(path), 1);
-</code>
+	
 
-<code>
- // TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is working now.
+ 	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
 	// Reads from the memory buffer thanks to SDL_RWops
 	music = Mix_LoadMUS_RW(app->assetManager->Load(path), 1);
-</code>
 
-<code>
- 	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is working now.
+ 	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
 	// Reads from the memory buffer thanks to SDL_RWops
 	Mix_Chunk* chunk = Mix_LoadWAV_RW(app->assetManager->Load(path), 1);
 </code>
