@@ -43,3 +43,21 @@
 6. This files will be generated. We will need to run the file PhysicsFS.sln and then prepare a build in Release and Win32.
 
 7. In the generated Release folder we will have everything you want. You will find the physfs.h in the following path of the folder you originally download.
+
+
+<h2  align="center" id="exercises">Exercises</h2>
+
+TODO 1:
+
+
+<h2  align="center" id="bibliography">Bibliography</h2>
+
+<ul>
+  <li> PhysicsFS : <a href="https://icculus.org/physfs/">https://icculus.org/physfs/</a></li>
+  <li> PhysFS Documentation : <a href="https://icculus.org/physfs/docs/html/physfs_8h.html">https://icculus.org/physfs/docs/html/physfs_8h.html</a></li>
+  <li> Pugui Loading from Memory : <a href="https://pugixml.org/docs/manual.html#loading.memory">https://pugixml.org/docs/manual.html#loading.memory/</a></li>  
+  <li> CMake Building : <a href="https://preshing.com/20170511/how-to-build-a-cmake-based-project/#running-cmake-gui">https://preshing.com/20170511/how-to-build-a-cmake-based-project/#running-cmake-gui</a></li>
+  <li> SDL_RWops and Related Functions : <a href="https://wiki.libsdl.org/SDL_RWops">https://wiki.libsdl.org/SDL_RWops</a></li>  
+  <li> PhysicsFS : <a href="https://icculus.org/physfs/">https://icculus.org/physfs/</a></li> 
+  <li> Buffers usefull stuff : <a href="https://www.quora.com/What-is-the-difference-between-declaring-a-variable-as-char-*buffer-and-char-**buffer-in-the-C-programming-language">https://www.quora.com/What-is-the-diff. . .</a></li>  
+</ul>
