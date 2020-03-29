@@ -31,11 +31,11 @@
 
 1. Download PhysicsFS ZIP from icculus.org. If you want to download the file directly, <a href="https://icculus.org/physfs/downloads/physfs-3.0.2.tar.bz2">click here</a>.
 
-<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step1.JPG" class="center">
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step1.JPG" class="center" align="center">
 
 2. Download CMake. I recommend the version with interface since it is more intuitive and is the one that I will explain next. If you want to download it directly, <a href="https://github.com/Kitware/CMake/releases/download/v3.17.0/cmake-3.17.0-win64-x64.msi">click here</a>.
 
-<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step2.JPG" class="center">
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step2.JPG" class="center" align="center">
 
 3. Install CMake and open "CMake (cmake-gui)" executable. Check where CMakeLists.txt is in the downloaded PhysicsFS folder 
 (In this case it is the base folder) and get this path to <b>the source code</b> field. To <b>build the binaries</b> you can create any empty folder.
