@@ -144,56 +144,55 @@ You can organize the ZIP as you wish and intuitive seems to you.
 <h4  align="left" id="TODO">TODO 3:</h4>
 
 
-		uint ModuleAssetsManager::Load(const char* path, char** buffer) const
+	uint ModuleAssetsManager::Load(const char* path, char** buffer) const
+	{
+	
+		uint ret;
+	
+		// TODO 3 (Solved): You want to return the number of bytes it has read from the file that we passed to this 				function. 	
+		// Maybe you want to search readBytes in the documentation, and investigate from there how to build the 				function.
+		// The reading offset is set to the first byte of the file.
+	
+		// Returns a filehandle on success that we will need for the PHYSFS_fileLength
+	
+		PHYSFS_file* file = PHYSFS_openRead(path); 
+
+		// Check for end-of-file state on a PhysicsFS filehandle.
+	
+		if (!PHYSFS_eof(file))
 		{
 	
-			uint ret;
-	
-			// TODO 3 (Solved): You want to return the number of bytes it has read from the file that we passed to this 				function. 	
-			// Maybe you want to search readBytes in the documentation, and investigate from there how to build the 				function.
-			// The reading offset is set to the first byte of the file.
-	
-			// Returns a filehandle on success that we will need for the PHYSFS_fileLength
-	
-			PHYSFS_file* file = PHYSFS_openRead(path); 
+			// Get total length of a file in bytes
+			uint lenght = PHYSFS_fileLength(file); 
+			*buffer = new char[lenght]; 
 
-			// Check for end-of-file state on a PhysicsFS filehandle.
-	
-			if (!PHYSFS_eof(file))
+			// Read data from a PhysicsFS firehandle. Returns a number of bytes read.
+			uint bytes = PHYSFS_readBytes(file, *buffer, lenght);
+
+			if (bytes != lenght) 
 			{
+				LOG("%s" , path, "ERROR: %s" , PHYSFS_getLastError());
+				RELEASE_ARRAY(buffer);
+			}
+			else
+				ret = bytes; 
+			}
+			else
+				LOG("%s", path, "ERROR: %s", PHYSFS_getLastError());
+
+
+		// Close a PhysicsFS firehandle
 	
-				// Get total length of a file in bytes
-				uint lenght = PHYSFS_fileLength(file); 
-				*buffer = new char[lenght]; 
+		PHYSFS_close(file);
 
-				// Read data from a PhysicsFS firehandle. Returns a number of bytes read.
-				uint bytes = PHYSFS_readBytes(file, *buffer, lenght);
-
-				if (bytes != lenght) 
-				{
-					LOG("%s" , path, "ERROR: %s" , PHYSFS_getLastError());
-					RELEASE_ARRAY(buffer);
-				}
-				else
-					ret = bytes; 
-				}
-				else
-					LOG("%s", path, "ERROR: %s", PHYSFS_getLastError());
-
-
-			// Close a PhysicsFS firehandle
-	
-			PHYSFS_close(file);
-
-			return ret;
-		}
+		return ret;
+	}
 	
 
 
 <h4  align="left" id="TODO">TODO 4:</h4>
 
-	
-  		bool ModuleScene::Start() 
+		bool ModuleScene::Start() 
   		{ 
 	
 			// TODO 4 (Solved): Uncomment all of this and resolve how to load the document from the memory with the link 				below.
@@ -226,8 +225,7 @@ You can organize the ZIP as you wish and intuitive seems to you.
 
 <h4  align="left" id="TODO">TODO 5:</h4>
 
-	
-  		SDL_RWops* ModuleAssetsManager::Load(const char* path) const
+		SDL_RWops* ModuleAssetsManager::Load(const char* path) const
 		{
 	
 			char* buffer;
@@ -246,25 +244,15 @@ You can organize the ZIP as you wish and intuitive seems to you.
 	
 <h4  align="left" id="TODO">TODO 6:</h4>
 
+		// There you don't need to do anything. Only to invest about this methods.
 
- 		// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how 		is working now.
-	
-		// Reads from the memory buffer thanks to SDL_RWops
 		SDL_Surface* surface = IMG_Load_RW(app->assetManager->Load(path), 1);
 	
-
- 		// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how 		is working now.
-	
-		// Reads from the memory buffer thanks to SDL_RWops
 		music = Mix_LoadMUS_RW(app->assetManager->Load(path), 1);
 
-
- 		// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how 		is working now.
-	
-		// Reads from the memory buffer thanks to SDL_RWops
 		Mix_Chunk* chunk = Mix_LoadWAV_RW(app->assetManager->Load(path), 1);
 	
-</code>
+	</code>
 
 <h2  align="center" id="bibliography">Bibliography</h2>
 
