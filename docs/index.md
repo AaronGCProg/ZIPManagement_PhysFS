@@ -76,10 +76,11 @@ You can organize the ZIP as you wish and intuitive seems to you.
 
 <h3  align="center" id="TODO">TODO's</h3>
 
-The TODO have various tips and helps, as well as links that will take you to the necessary documentation. Whenever you see that some TODO does not work, check if the following TODO is also related; because some TODO is dependent on each other and until they are both finished they will not work.
+<p align="justify">The TODO have various tips and helps, as well as links that will take you to the necessary documentation. Whenever you see that some TODO does not work, check if the following TODO is also related; because some TODO is dependent on each other and until they are both finished they will not work.</p>
 
 Anyway you can see how the progression does not become complicated.
 
+You can download the <b>Handout</b> to do the following exercises <a href="https://github.com/AaronGCProg/ZIPManagement_PhysFS/releases/download/v0.5/PhysFS_Handout.zip">clicking here</a>.
 
 <h4  align="left" id="TODO">TODO 0 & TODO 1:</h4>
 
@@ -261,9 +262,14 @@ Anyway you can see how the progression does not become complicated.
 
 <h3  align="center" id="solution">Solution</h3>
 
-The solution will show us Geralt of Rivia just like this. In addition will play random music, and if you press the key "1", will play random SFX. Progress will not be noticeable until the last TODO is complete. Until then, it is recommended to track the information of the variables through breakpoints to know if the functions are working.
+<p align="justify">The solution will show us Geralt of Rivia just like this. In addition will play random music, and if you press the key "1", will play random SFX. Progress will not be noticeable until the last TODO is complete. Until then, it is recommended to track the information of the variables through breakpoints to know if the functions are working.</p>
+
+You can download <b>DEMO of Solution</b> <a href="https://github.com/AaronGCProg/ZIPManagement_PhysFS/releases/download/v1.0/PhysFS_DEMO_Solution.zip">clicking here</a>.
 
 <img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/solution.JPG" class="center">
+
+You can check the code of the solution, <a href="https://github.com/AaronGCProg/ZIPManagement_PhysFS/tree/master/full_code/PhysFS_Solution/Motor2D">clicking here</a>.
+
 
 
 <h2  align="center" id="bibliography">Bibliography</h2>
@@ -271,13 +277,24 @@ The solution will show us Geralt of Rivia just like this. In addition will play 
 <ul>
   <li> PhysicsFS : <a href="https://icculus.org/physfs/">https://icculus.org/physfs/</a></li>
 	
+	
   <li> PhysFS Documentation : <a href="https://icculus.org/physfs/docs/html/physfs_8h.html">https://icculus.org/physfs/docs/html/physfs_8h.html</a></li>
+  
+  
+  <li> How to set PhysFS : <a href="https://gamedev.stackexchange.com/questions/37820/how-do-you-set-up-physfs-for-use-in-a-game">https://gamedev.stackexchange.com/questions/37820/how-do-you-set-up-physfs-for-use-in-a-game</a></li>
+	
+	
+<li> PhysFS Install Github : <a href="https://github.com/SuperTux/physfs/blob/master/docs/INSTALL.txt">https://github.com/SuperTux/physfs/blob/master/docs/INSTALL.txt</a></li>
+	
 	
   <li> Pugui Loading from Memory : <a href="https://pugixml.org/docs/manual.html#loading.memory">https://pugixml.org/docs/manual.html#loading.memory/</a></li>  
 	
+	
   <li> CMake Building : <a href="https://preshing.com/20170511/how-to-build-a-cmake-based-project/#running-cmake-gui">https://preshing.com/20170511/how-to-build-a-cmake-based-project/#running-cmake-gui</a></li>
 	
+	
   <li> SDL_RWops and Related Functions : <a href="https://wiki.libsdl.org/SDL_RWops">https://wiki.libsdl.org/SDL_RWops</a></li>  
+	
 	
   <li> Buffers usefull stuff : <a href="https://www.quora.com/What-is-the-difference-between-declaring-a-variable-as-char-*buffer-and-char-**buffer-in-the-C-programming-language">https://www.quora.com/What-is-the-diff. . .</a></li>  
 </ul>
