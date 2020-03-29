@@ -80,7 +80,9 @@
 	PHYSFS_mount(".", nullptr, 1);
 }
 
+</code>
 
+<code>
 ModuleAssetsManager::~ModuleAssetsManager()
 {
 	// Deinitialize the PhysicsFS library.
@@ -88,11 +90,11 @@ ModuleAssetsManager::~ModuleAssetsManager()
 	// NOTE: This call can FAIL if there's a file open for writing that refuses to close
 	PHYSFS_deinit();
 }
+</code>
 
 <h4  align="left" id="TODO">TODO 2:</h4>
 
-
-
+<code>
 bool ModuleAssetsManager::Awake(pugi::xml_node& config)
 {
 	// Determine if the PhysicsFS library is initialized, we can check it for avoid errors.
@@ -128,6 +130,9 @@ uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 	// Returns a filehandle on success that we will need for the PHYSFS_fileLength
 	PHYSFS_file* file = PHYSFS_openRead(path); 
 
+</code>
+
+<code>
 	// Check for end-of-file state on a PhysicsFS filehandle.
 	if (!PHYSFS_eof(file))
 	{
