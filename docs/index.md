@@ -76,6 +76,11 @@ You can organize the ZIP as you wish and intuitive seems to you.
 
 <h3  align="center" id="TODO">TODO's</h3>
 
+The TODO have various tips and helps, as well as links that will take you to the necessary documentation. Whenever you see that some TODO does not work, check if the following TODO is also related; because some TODO is dependent on each other and until they are both finished they will not work.
+
+Anyway you can see how the progression does not become complicated.
+
+
 <h4  align="left" id="TODO">TODO 0 & TODO 1:</h4>
 
 <code>
@@ -256,7 +261,7 @@ You can organize the ZIP as you wish and intuitive seems to you.
 
 <h3  align="center" id="solution">Solution</h3>
 
-The solution will show us Geralt of Rivia just like this. In addition will play random music, and if you press the key "1", will play random SFX.
+The solution will show us Geralt of Rivia just like this. In addition will play random music, and if you press the key "1", will play random SFX. Progress will not be noticeable until the last TODO is complete. Until then, it is recommended to track the information of the variables through breakpoints to know if the functions are working.
 
 <img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/solution.JPG" class="center">
 
