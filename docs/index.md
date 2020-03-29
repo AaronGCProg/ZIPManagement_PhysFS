@@ -62,8 +62,12 @@
 
 <h2  align="center" id="exercises">Exercises</h2>
 
+TODO 0:
 TODO 1:
-
+TODO 2:
+TODO 3:
+TODO 4:
+TODO 5:
 
 <h2  align="center" id="bibliography">Bibliography</h2>
 
