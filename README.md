@@ -2,6 +2,9 @@
 
 This project is carried out by Aarón Guerrero, student of the Bachelor's degree in Video Game Design and Developmen at Terrasa, CITM, UPC. This personal research seeks to reflect the knowledge acquired and share it with any one interested.
 
+PhysicsFS is a library to provide abstract access to various archives. This makes for easy access to ZIP files in the same way as you access a file directly on the disk, and it makes it easy to ship a new archive that will override a previous archive on a per-file basis. Finally, PhysicsFS gives you platform-abstracted means to determine if CD-ROMs are available, the user's home directory, where in the real filesystem your program is running, etc.
+
+
 You can find the project in: https://github.com/AaronGCProg/ZIPManagement_PhysFS
 
 And the web page with extended information at: https://aarongcprog.github.io/ZIPManagement_PhysFS/
