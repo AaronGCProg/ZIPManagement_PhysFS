@@ -54,6 +54,8 @@ uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 	// TODO 3: You want to return the number of bytes it has read from the file that we passed to this function. 
 	// Maybe you want to search readBytes in the documentation, and investigate from there how to build the function.
 
+	// Remember to reserve buffer with the length before call readBytes. Maybe something like "*bufer = new c. . . "
+
 	// Uncomment when you finished.
 	// PHYSFS_close(file);
 
