@@ -62,6 +62,7 @@
 
 
 <h4  align="left" id="TODO">TODO 0 & TODO 1:</h4>
+
 <code>
  ModuleAssetsManager::ModuleAssetsManager() : Module()
 {
@@ -87,10 +88,10 @@ ModuleAssetsManager::~ModuleAssetsManager()
 	// NOTE: This call can FAIL if there's a file open for writing that refuses to close
 	PHYSFS_deinit();
 }
-</code>
 
 <h4  align="left" id="TODO">TODO 2:</h4>
-<code>
+
+
 
 bool ModuleAssetsManager::Awake(pugi::xml_node& config)
 {
@@ -114,6 +115,7 @@ bool ModuleAssetsManager::Awake(pugi::xml_node& config)
 </code>
 
 <h4  align="left" id="TODO">TODO 3:</h4>
+
 <code>
 uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 {
@@ -156,6 +158,7 @@ uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 </code>
 
 <h4  align="left" id="TODO">TODO 4:</h4>
+
 <code>
   
   bool ModuleScene::Start()
