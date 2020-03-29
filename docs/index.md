@@ -97,11 +97,10 @@
 	
 	}
 	
-</code>
 
 <h4  align="left" id="TODO">TODO 2:</h4>
 
-<code>
+
 	
 	bool ModuleAssetsManager::Awake(pugi::xml_node& config)
 	{
@@ -123,11 +122,9 @@
 	return true;
 	}
  
-</code>
 
 <h4  align="left" id="TODO">TODO 3:</h4>
 
-<code>
 	
 	uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 	{
@@ -174,11 +171,9 @@
 	return ret;
 	}
 
-</code>
 
 <h4  align="left" id="TODO">TODO 4:</h4>
 
-<code>
   
   	bool ModuleScene::Start() 
   	{ 
@@ -207,12 +202,10 @@
 
 	return true;
 	}
-  
-</code>
+
 
 <h4  align="left" id="TODO">TODO 5:</h4>
 
-<code>
   
   	SDL_RWops* ModuleAssetsManager::Load(const char* path) const
 	{
@@ -230,11 +223,9 @@
 
 	}
 	
-</code>
 
 <h4  align="left" id="TODO">TODO 6:</h4>
 
-<code>
 	
  	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
 	
