@@ -61,107 +61,122 @@
 <img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/dll_steps/step8_2.JPG" class="center">
 
 
+<h2  align="center" id="exercices">Exercises & Solutions</h2>
+
+<h3  align="center" id="setup">Folder Set-Up</h3>
+
+Remember to have all your assets in a ZIP. From now on we will no longer load from conventional folders.
+
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/setup.JPG" class="center">
+
+Within the ZIP you can organize it as your team, the more intuitive it seems.
+
+<img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/setup2.JPG" class="center">
+
 <h4  align="left" id="TODO">TODO 0 & TODO 1:</h4>
 
-<code>
+	<code>
 	
-	 ModuleAssetsManager::ModuleAssetsManager() : Module()
+	ModuleAssetsManager::ModuleAssetsManager() : Module()
 	{
 	
-	name = ("assetsManager");
+		name = ("assetsManager");
 
-	// TODO 0 (Solved): Open the following link and check it: https://icculus.org/physfs/docs/html/physfs_8h.html
-	// TODO 1 (Solved): You must initialize and de-initialize the PhysFS API.
+		// TODO 0 (Solved): Open the following link and check it: https://icculus.org/physfs/docs/html/physfs_8h.html
+		// TODO 1 (Solved): You must initialize and de-initialize the PhysFS API.
 
-	// Initialize the PhysicsFS library
-	// This must be called before any other PhysicsFS function
-	// This should be called prior to any attempts to change your process's current working directory
-	PHYSFS_init(nullptr);
+		// Initialize the PhysicsFS library
+		// This must be called before any other PhysicsFS function
+		// This should be called prior to any attempts to change your process's current working directory
+		PHYSFS_init(nullptr);
 
-	// We only need this when compiling in debug. In Release we don't need it.
-	PHYSFS_mount(".", nullptr, 1);
+		// We only need this when compiling in debug. In Release we don't need it.
+		PHYSFS_mount(".", nullptr, 1);
 	}
 
-
+	
 
 	ModuleAssetsManager::~ModuleAssetsManager()
 	{
 	
-	// Deinitialize the PhysicsFS library.
+		// Deinitialize the PhysicsFS library.
 	
-	// This closes any files opened via PhysicsFS, blanks the search/write paths, frees memory, and invalidates all of your file 		handles.
+		// This closes any files opened via PhysicsFS, blanks the search/write paths, frees memory, and invalidates all of your 		file handles.
 	
-	// NOTE: This call can FAIL if there's a file open for writing that refuses to close
+		// NOTE: This call can FAIL if there's a file open for writing that refuses to close
 	
-	PHYSFS_deinit();
+		PHYSFS_deinit();
 	
 	}
 	
+	</code>
 
 <h4  align="left" id="TODO">TODO 2:</h4>
 
 
+	<code>
 	
 	bool ModuleAssetsManager::Awake(pugi::xml_node& config)
 	{
-	// Determine if the PhysicsFS library is initialized, we can check it for avoid errors.
+		// Determine if the PhysicsFS library is initialized, we can check it for avoid errors.
 	
-	if(PHYSFS_isInit())
-		LOG("Asset Manager is succefully loaded");
-	else
-		LOG("Failed loading Asset Manager");
+		if(PHYSFS_isInit())
+			LOG("Asset Manager is succefully loaded");
+		else
+			LOG("Failed loading Asset Manager");
 
-	// TODO 2 (Solved): Mount the desired ZIP with PhysFS.
+		// TODO 2 (Solved): Mount the desired ZIP with PhysFS.
 
-	// Add an archive or directory to the search path.
-	// If this is a duplicate, the entry is not added again, even though the function succeeds.
-	// When you mount an archive, it is added to a virtual file system...
-	// all files in all of the archives are interpolated into a single hierachical file tree.
-	PHYSFS_mount("Assets.zip", nullptr, 1);
+		// Add an archive or directory to the search path.
+	
+		// If this is a duplicate, the entry is not added again, even though the function succeeds.
+		// When you mount an archive, it is added to a virtual file system...
+		// all files in all of the archives are interpolated into a single hierachical file tree.
+		PHYSFS_mount("Assets.zip", nullptr, 1);
 
-	return true;
+		return true;
 	}
- 
+	
+ 	</code>
 
 <h4  align="left" id="TODO">TODO 3:</h4>
 
-	
+	<code>
 	uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 	{
-	uint ret;
 	
-	// TODO 3 (Solved): You want to return the number of bytes it has read from the file that we passed to this function. 
+		uint ret;
 	
-	// Maybe you want to search readBytes in the documentation, and investigate from there how to build the function.
+		// TODO 3 (Solved): You want to return the number of bytes it has read from the file that we passed to this function. 	
+		// Maybe you want to search readBytes in the documentation, and investigate from there how to build the function.
+		// The reading offset is set to the first byte of the file.
+	
+		// Returns a filehandle on success that we will need for the PHYSFS_fileLength
+	
+		PHYSFS_file* file = PHYSFS_openRead(path); 
 
-	// The reading offset is set to the first byte of the file.
+		// Check for end-of-file state on a PhysicsFS filehandle.
 	
-	// Returns a filehandle on success that we will need for the PHYSFS_fileLength
-	
-	PHYSFS_file* file = PHYSFS_openRead(path); 
-
-	// Check for end-of-file state on a PhysicsFS filehandle.
-	
-	if (!PHYSFS_eof(file))
-	{
-	
-		// Get total length of a file in bytes
-		uint lenght = PHYSFS_fileLength(file); 
-		*buffer = new char[lenght]; 
-
-		// Read data from a PhysicsFS firehandle. Returns a number of bytes read.
-		uint bytes = PHYSFS_readBytes(file, *buffer, lenght);
-
-		if (bytes != lenght) 
+		if (!PHYSFS_eof(file))
 		{
-			LOG("%s" , path, "ERROR: %s" , PHYSFS_getLastError());
-			RELEASE_ARRAY(buffer);
+	
+			// Get total length of a file in bytes
+			uint lenght = PHYSFS_fileLength(file); 
+			*buffer = new char[lenght]; 
+
+			// Read data from a PhysicsFS firehandle. Returns a number of bytes read.
+			uint bytes = PHYSFS_readBytes(file, *buffer, lenght);
+
+			if (bytes != lenght) 
+			{
+				LOG("%s" , path, "ERROR: %s" , PHYSFS_getLastError());
+				RELEASE_ARRAY(buffer);
+			}
+			else
+				ret = bytes; 
 		}
 		else
-			ret = bytes; 
-	}
-	else
-		LOG("%s", path, "ERROR: %s", PHYSFS_getLastError());
+			LOG("%s", path, "ERROR: %s", PHYSFS_getLastError());
 
 
 	// Close a PhysicsFS firehandle
@@ -170,62 +185,69 @@
 
 	return ret;
 	}
-
+	
+	</code>
 
 <h4  align="left" id="TODO">TODO 4:</h4>
 
-  
+  	<code>
+	
   	bool ModuleScene::Start() 
   	{ 
- 	// TODO 4 (Solved): Uncomment all of this and resolve how to load the document from the memory with the link below.
+	
+		// TODO 4 (Solved): Uncomment all of this and resolve how to load the document from the memory with the link below.
 
-	if (!PHYSFS_exists("data.xml"))
+		if (!PHYSFS_exists("data.xml"))
 		return false;
 
-	char* buffer;
+		char* buffer;
 
-	pugi::xml_document dataFile;
-	int bytesFile = app->assetManager->Load("data.xml", &buffer);
+		pugi::xml_document dataFile;
+		int bytesFile = app->assetManager->Load("data.xml", &buffer);
 
-	// Loading document from memory with PUGI: https://pugixml.org/docs/manual.html#loading.memory
-	pugi::xml_parse_result result = dataFile.load_buffer(buffer, bytesFile);
-	RELEASE_ARRAY(buffer);
+		// Loading document from memory with PUGI: https://pugixml.org/docs/manual.html#loading.memory
+		pugi::xml_parse_result result = dataFile.load_buffer(buffer, bytesFile);
+		RELEASE_ARRAY(buffer);
 
-	// We load all the ZIP texture files
-	LoadTexFile(dataFile);
+		// We load all the ZIP texture files
+		LoadTexFile(dataFile);
 
-	// We load all the ZIP fx files
-	LoadFxFile(dataFile);
+		// We load all the ZIP fx files
+		LoadFxFile(dataFile);
 
-	// We load and play the desired music from the ZIP
-	LoadMusFile(dataFile);
+		// We load and play the desired music from the ZIP
+		LoadMusFile(dataFile);
 
-	return true;
-	}
-
-
-<h4  align="left" id="TODO">TODO 5:</h4>
-
-  
-  	SDL_RWops* ModuleAssetsManager::Load(const char* path) const
-	{
-	char* buffer;
-	uint bytes = Load(path, &buffer);
-
-	// TODO 5 (Solved): Check what is: https://wiki.libsdl.org/SDL_RWops
-	// We will need a new method to load Music, FX and Textures from the memory.
-	// Try to investigate SDL_RWops and Related Functions.
-
-	// Read-only memory buffer for use with RWops, retruns a pointer to a new SDL_RWops structure
-	SDL_RWops* ret = SDL_RWFromConstMem(buffer, bytes);
-
-	return ret;
-
+		return true;
 	}
 	
+	</code>
 
+	<h4  align="left" id="TODO">TODO 5:</h4>
+
+  	<code>
+	
+  	SDL_RWops* ModuleAssetsManager::Load(const char* path) const
+	{
+	
+		char* buffer;
+		uint bytes = Load(path, &buffer);
+
+		// TODO 5 (Solved): Check what is: https://wiki.libsdl.org/SDL_RWops
+		// We will need a new method to load Music, FX and Textures from the memory.
+		// Try to investigate SDL_RWops and Related Functions.
+
+		// Read-only memory buffer for use with RWops, retruns a pointer to a new SDL_RWops structure
+		SDL_RWops* ret = SDL_RWFromConstMem(buffer, bytes);
+
+		return ret;
+	}
+	
+	</code>
+	
 <h4  align="left" id="TODO">TODO 6:</h4>
 
+	<code>
 	
  	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
 	
@@ -243,7 +265,7 @@
 	// Reads from the memory buffer thanks to SDL_RWops
 	Mix_Chunk* chunk = Mix_LoadWAV_RW(app->assetManager->Load(path), 1);
 	
-</code>
+	</code>
 
 <h2  align="center" id="bibliography">Bibliography</h2>
 
