@@ -73,9 +73,12 @@ Within the ZIP you can organize it as your team, the more intuitive it seems.
 
 <img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/setup2.JPG" class="center">
 
+
+<h3  align="center" id="TODO">TODO's</h3>
+
 <h4  align="left" id="TODO">TODO 0 & TODO 1:</h4>
 
-	<code>
+<code>
 	
 	ModuleAssetsManager::ModuleAssetsManager() : Module()
 	{
@@ -109,12 +112,11 @@ Within the ZIP you can organize it as your team, the more intuitive it seems.
 	
 	}
 	
-	</code>
+
 
 <h4  align="left" id="TODO">TODO 2:</h4>
 
 
-	<code>
 	
 	bool ModuleAssetsManager::Awake(pugi::xml_node& config)
 	{
@@ -137,135 +139,132 @@ Within the ZIP you can organize it as your team, the more intuitive it seems.
 		return true;
 	}
 	
- 	</code>
+
 
 <h4  align="left" id="TODO">TODO 3:</h4>
 
-	<code>
-	uint ModuleAssetsManager::Load(const char* path, char** buffer) const
-	{
-	
-		uint ret;
-	
-		// TODO 3 (Solved): You want to return the number of bytes it has read from the file that we passed to this function. 	
-		// Maybe you want to search readBytes in the documentation, and investigate from there how to build the function.
-		// The reading offset is set to the first byte of the file.
-	
-		// Returns a filehandle on success that we will need for the PHYSFS_fileLength
-	
-		PHYSFS_file* file = PHYSFS_openRead(path); 
 
-		// Check for end-of-file state on a PhysicsFS filehandle.
-	
-		if (!PHYSFS_eof(file))
+		uint ModuleAssetsManager::Load(const char* path, char** buffer) const
 		{
 	
-			// Get total length of a file in bytes
-			uint lenght = PHYSFS_fileLength(file); 
-			*buffer = new char[lenght]; 
+			uint ret;
+	
+			// TODO 3 (Solved): You want to return the number of bytes it has read from the file that we passed to this 				function. 	
+			// Maybe you want to search readBytes in the documentation, and investigate from there how to build the 				function.
+			// The reading offset is set to the first byte of the file.
+	
+			// Returns a filehandle on success that we will need for the PHYSFS_fileLength
+	
+			PHYSFS_file* file = PHYSFS_openRead(path); 
 
-			// Read data from a PhysicsFS firehandle. Returns a number of bytes read.
-			uint bytes = PHYSFS_readBytes(file, *buffer, lenght);
-
-			if (bytes != lenght) 
+			// Check for end-of-file state on a PhysicsFS filehandle.
+	
+			if (!PHYSFS_eof(file))
 			{
-				LOG("%s" , path, "ERROR: %s" , PHYSFS_getLastError());
-				RELEASE_ARRAY(buffer);
-			}
-			else
-				ret = bytes; 
+	
+				// Get total length of a file in bytes
+				uint lenght = PHYSFS_fileLength(file); 
+				*buffer = new char[lenght]; 
+
+				// Read data from a PhysicsFS firehandle. Returns a number of bytes read.
+				uint bytes = PHYSFS_readBytes(file, *buffer, lenght);
+
+				if (bytes != lenght) 
+				{
+					LOG("%s" , path, "ERROR: %s" , PHYSFS_getLastError());
+					RELEASE_ARRAY(buffer);
+				}
+				else
+					ret = bytes; 
+				}
+				else
+					LOG("%s", path, "ERROR: %s", PHYSFS_getLastError());
+
+
+			// Close a PhysicsFS firehandle
+	
+			PHYSFS_close(file);
+
+			return ret;
 		}
-		else
-			LOG("%s", path, "ERROR: %s", PHYSFS_getLastError());
-
-
-	// Close a PhysicsFS firehandle
 	
-	PHYSFS_close(file);
 
-	return ret;
-	}
-	
-	</code>
 
 <h4  align="left" id="TODO">TODO 4:</h4>
 
-  	<code>
 	
-  	bool ModuleScene::Start() 
-  	{ 
+  		bool ModuleScene::Start() 
+  		{ 
 	
-		// TODO 4 (Solved): Uncomment all of this and resolve how to load the document from the memory with the link below.
+			// TODO 4 (Solved): Uncomment all of this and resolve how to load the document from the memory with the link 				below.
 
-		if (!PHYSFS_exists("data.xml"))
-		return false;
+			if (!PHYSFS_exists("data.xml"))
+			return false;
 
-		char* buffer;
+			char* buffer;
 
-		pugi::xml_document dataFile;
-		int bytesFile = app->assetManager->Load("data.xml", &buffer);
+			pugi::xml_document dataFile;
+			int bytesFile = app->assetManager->Load("data.xml", &buffer);
 
-		// Loading document from memory with PUGI: https://pugixml.org/docs/manual.html#loading.memory
-		pugi::xml_parse_result result = dataFile.load_buffer(buffer, bytesFile);
-		RELEASE_ARRAY(buffer);
+			// Loading document from memory with PUGI: https://pugixml.org/docs/manual.html#loading.memory
+			pugi::xml_parse_result result = dataFile.load_buffer(buffer, bytesFile);
+			RELEASE_ARRAY(buffer);
 
-		// We load all the ZIP texture files
-		LoadTexFile(dataFile);
+			// We load all the ZIP texture files
+			LoadTexFile(dataFile);
 
-		// We load all the ZIP fx files
-		LoadFxFile(dataFile);
+			// We load all the ZIP fx files
+			LoadFxFile(dataFile);
 
-		// We load and play the desired music from the ZIP
-		LoadMusFile(dataFile);
+			// We load and play the desired music from the ZIP
+			LoadMusFile(dataFile);
 
-		return true;
-	}
+			return true;
+		}
 	
-	</code>
+
 
 	<h4  align="left" id="TODO">TODO 5:</h4>
 
-  	<code>
 	
-  	SDL_RWops* ModuleAssetsManager::Load(const char* path) const
-	{
+  		SDL_RWops* ModuleAssetsManager::Load(const char* path) const
+		{
 	
-		char* buffer;
-		uint bytes = Load(path, &buffer);
+			char* buffer;
+			uint bytes = Load(path, &buffer);
 
-		// TODO 5 (Solved): Check what is: https://wiki.libsdl.org/SDL_RWops
-		// We will need a new method to load Music, FX and Textures from the memory.
-		// Try to investigate SDL_RWops and Related Functions.
+			// TODO 5 (Solved): Check what is: https://wiki.libsdl.org/SDL_RWops
+			// We will need a new method to load Music, FX and Textures from the memory.
+			// Try to investigate SDL_RWops and Related Functions.
 
-		// Read-only memory buffer for use with RWops, retruns a pointer to a new SDL_RWops structure
-		SDL_RWops* ret = SDL_RWFromConstMem(buffer, bytes);
+			// Read-only memory buffer for use with RWops, retruns a pointer to a new SDL_RWops structure
+			SDL_RWops* ret = SDL_RWFromConstMem(buffer, bytes);
 
-		return ret;
-	}
+			return ret;
+		}
 	
-	</code>
 	
 <h4  align="left" id="TODO">TODO 6:</h4>
 
-	<code>
+
+ 		// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how 		is working now.
 	
- 	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
-	
-	// Reads from the memory buffer thanks to SDL_RWops
-	SDL_Surface* surface = IMG_Load_RW(app->assetManager->Load(path), 1);
+		// Reads from the memory buffer thanks to SDL_RWops
+		SDL_Surface* surface = IMG_Load_RW(app->assetManager->Load(path), 1);
 	
 
- 	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
+ 		// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how 		is working now.
 	
-	// Reads from the memory buffer thanks to SDL_RWops
-	music = Mix_LoadMUS_RW(app->assetManager->Load(path), 1);
+		// Reads from the memory buffer thanks to SDL_RWops
+		music = Mix_LoadMUS_RW(app->assetManager->Load(path), 1);
 
- 	// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how is 		working now.
+
+ 		// TODO 6: This TODO is a gift for you. If you finished TODO 5 correctly, you only need to uncomment this, but check how 		is working now.
 	
-	// Reads from the memory buffer thanks to SDL_RWops
-	Mix_Chunk* chunk = Mix_LoadWAV_RW(app->assetManager->Load(path), 1);
+		// Reads from the memory buffer thanks to SDL_RWops
+		Mix_Chunk* chunk = Mix_LoadWAV_RW(app->assetManager->Load(path), 1);
 	
-	</code>
+</code>
 
 <h2  align="center" id="bibliography">Bibliography</h2>
 
