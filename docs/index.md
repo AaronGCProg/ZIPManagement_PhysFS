@@ -65,11 +65,11 @@
 
 <h3  align="center" id="setup">Folder Set-Up</h3>
 
-Remember to have all your assets in a ZIP. From now on we will no longer load from conventional folders.
+Remember to have all your assets in a ZIP. From now, we will no longer load from conventional folders.
 
 <img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/setup.JPG" class="center">
 
-Within the ZIP you can organize it as your team, the more intuitive it seems.
+You can organize the ZIP as you wish and intuitive seems to you.
 
 <img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/setup2.JPG" class="center">
 
@@ -224,7 +224,7 @@ Within the ZIP you can organize it as your team, the more intuitive it seems.
 	
 
 
-	<h4  align="left" id="TODO">TODO 5:</h4>
+<h4  align="left" id="TODO">TODO 5:</h4>
 
 	
   		SDL_RWops* ModuleAssetsManager::Load(const char* path) const
