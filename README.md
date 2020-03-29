@@ -3,6 +3,7 @@
 This project is carried out by Aarón Guerrero, student of the Bachelor's degree in Video Game Design and Developmen at Terrasa, CITM, UPC. This personal research seeks to reflect the knowledge acquired and share it with any one interested.
 
 You can find the project in: https://github.com/AaronGCProg/ZIPManagement_PhysFS
+
 And the web page with extended information at: https://aarongcprog.github.io/ZIPManagement_PhysFS/
 
 
