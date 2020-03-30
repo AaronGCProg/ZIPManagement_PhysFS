@@ -1,6 +1,7 @@
 # Assets ZIP Management with PhysicsFS
 
-This project is carried out by Aarón Guerrero, student of the Bachelor's degree in Video Game Design and Developmen at Terrasa, CITM, UPC. This personal research seeks to reflect the knowledge acquired and share it with any one interested.
+I am Aarón Guerrero, student of the Bachelor’s Degree in Video Games by UPC at CITM. This content is generated for the second year’s subject Project 2, under supervision of lecturer Marc Garrigó. This personal research seeks to reflect the knowledge acquired and share it with any one interested.
+
 
 PhysicsFS is a library to provide abstract access to various archives. This makes for easy access to ZIP files in the same way as you access a file directly on the disk, and it makes it easy to ship a new archive that will override a previous archive on a per-file basis. Finally, PhysicsFS gives you platform-abstracted means to determine if CD-ROMs are available, the user's home directory, where in the real filesystem your program is running, etc.
 
