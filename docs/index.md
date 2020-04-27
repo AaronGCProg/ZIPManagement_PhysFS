@@ -144,6 +144,29 @@ You can organize the ZIP as you wish and intuitive seems to you.
 <img src="https://raw.githubusercontent.com/AaronGCProg/ZIPManagement_PhysFS/master/docs/imagesWeb/setup2.JPG" class="center">
 
 
+<h3  align="center" id="TODO">Assets Manager Structure</h3>
+
+<p align="justify">The functions that we will have to prepare are very few, in a simple and intuitive structure. Then we can see how the structure of the module we will create would look like, simply observing the ".h".</p>
+
+<code>
+	
+	ModuleAssetsManager();
+	~ModuleAssetsManager();
+
+	// Called before render is available
+	bool Awake(pugi::xml_node&);
+
+	// Called before quitting
+	bool CleanUp();
+
+	// Return the bytes of a PhysFS filehandle
+	uint Load(const char* path, char** buffer) const;
+
+	// Allows you to use pointers to memory instead of files or things such as images or samples
+	SDL_RWops* Load(const char* path) const;
+	
+</code>	
+
 <h3  align="center" id="TODO">TODO's</h3>
 
 <p align="justify">The TODO have various tips and helps, as well as links that will take you to the necessary documentation. Whenever you see that some TODO does not work, check if the following TODO is also related; because some TODO is dependent on each other and until they are both finished they will not work.</p>
