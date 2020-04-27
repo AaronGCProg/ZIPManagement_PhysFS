@@ -5,12 +5,35 @@
 
 <p align="justify">I am <a href="https://www.linkedin.com/in/aar%C3%B3n-guerrero-cruz-5a2333164/">Aarón Guerrero</a>, student of the <a href="https://www.citm.upc.edu/ing/estudis/graus-videojocs/">Bachelor’s Degree in Video Games by UPC at CITM</a>. This content is generated for the second year’s subject Project 2, under supervision of lecturer <a href="https://www.linkedin.com/in/mgarrigo/">Marc Garrigó</a>. </p> 
 
+
+
 <h2  align="center" id="physfs">What is PhysicsFS?</h2>
 
 <p align="justify"><b>Explanation from <a href="https://icculus.org/physfs/">icculus.org</a></b>: PhysicsFS is a library to provide abstract access to various archives. It is intended for use in video games, and the design was somewhat inspired by Quake 3's file subsystem. The programmer defines a "write directory" on the physical filesystem. No file writing done through the PhysicsFS API can leave that write directory, for security. For example, an embedded scripting language cannot write outside of this path if it uses PhysFS for all of its I/O, which means that untrusted scripts can run more safely. Symbolic links can be disabled as well, for added safety. For file reading, the programmer lists directories and archives that form a "search path". Once the search path is defined, it becomes a single, transparent hierarchical filesystem. This makes for easy access to ZIP files in the same way as you access a file directly on the disk, and it makes it easy to ship a new archive that will override a previous archive on a per-file basis. Finally, PhysicsFS gives you platform-abstracted means to determine if CD-ROMs are available, the user's home directory, where in the real filesystem your program is running, etc.</p> 
 
 <p align="justify">In summary, PhysicsFS it's a portable, flexible file i/o abstraction. This API gives you access to a system file system in ways superior to the stdio or system i/o calls. The <b>main benefits</b> highlighted by the API developers are that it is <b>portable</b>, more <b>secure</b> because no file acces is permitted outside the specified dirs, and <b>flexible</b> because archives can be used transparently as directory structures.</p>
 
+
+
+<h2  align="center" id="physfs">We will use it</h2>
+
+<p align="justify"><b>Using PhysFS involves loading absolutely all files through this API, in a different way than conventional. That means that we must understand how the necessary functions that PhysicsFS brings.</p> 
+
+<ul>
+  <li><b>PHYSFS_init</b>: Initialize the PhysicsFS library. This must be called before any other PhysicsFS function.</li>
+  <li><b>PHYSFS_deinit</b>: Deinitialize the PhysicsFS library. This closes any files opened via PhysicsFS, blanks the search/write paths, frees memory, and invalidates all of your file handles.</li>
+  <li><b>PHYSFS_mount</b>: Add an archive or directory to the search path. If this is a duplicate, the entry is not added again, even though the function succeeds. You may not add the same archive to two different mountpoints: duplicate checking is done against the archive and not the mountpoint.</li>
+  <li><b>PHYSFS_close</b>: Close a PhysicsFS filehandle.This call is capable of failing if the operating system was buffering writes to the physical media, and, now forced to write those changes to physical media, can not store the data for some reason.</li>
+</ul>
+
+
+<h3  align="center" id="abmount">About Mounting</h3>
+
+<p align="justify"><b>Mounting a file is very important in an API like this, which allows you to carry out the rest of the functionalities.
+	
+When you mount an archive, it is added to a virtual file system...all files in all of the archives are interpolated into a single hierachical file tree. Two archives mounted at the same place (or an archive with files overlapping another mountpoint) may have overlapping files: in such a case, the file earliest in the search path is selected, and the other files are inaccessible to the application. This allows archives to be used to override previous revisions; you can use the mounting mechanism to place archives at a specific point in the file tree and prevent overlap; this is useful for downloadable mods that might trample over application data or each other, for example.
+
+The mountpoint does not need to exist prior to mounting, which is different than those familiar with the Unix concept of "mounting" may expect. As well, more than one archive can be mounted to the same mountpoint, or mountpoints and archive contents can overlap...the interpolation mechanism still functions as usual.</p> 
 
 
 <h2  align="center" id="howimplement">How can I implement it?</h2>
