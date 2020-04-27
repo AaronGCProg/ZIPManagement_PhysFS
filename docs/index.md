@@ -42,6 +42,44 @@
 <p align="justify">The mountpoint does not need to exist prior to mounting, which is different than those familiar with the Unix concept of "mounting" may expect. As well, more than one archive can be mounted to the same mountpoint, or mountpoints and archive contents can overlap...the interpolation mechanism still functions as usual.</p> 
 
 
+<h3  align="center" id="nefunctions">Necessary Functions</h3>
+
+<p align="justify">Once we have initialized the API and have mounted a virtual file, we will go to other functions. Among them, the most important will be listed below:</p> 
+
+<ul>
+  <li><b>PHYSFS_openRead:</b> Open a file for reading. Open a file for reading, in platform-independent notation. The search path is checked one at a time until a matching file is found, in which case an abstract filehandle is associated with it, and reading may be done. The reading offset is set to the first byte of the file.</li>
+
+
+  <li><b>PHYSFS_fileLength:</b> Get total length of a file in bytes. Note that if another process/thread is writing to this file at the same time, then the information this function supplies could be incorrect before you get it. </li>
+  
+  
+   <li><b>PHYSFS_eof:</b> Check for end-of-file state on a PhysicsFS filehandle. Determine if the end of file has been reached in a PhysicsFS filehandle.</li>
+
+
+  <li><b>PHYSFS_readBytes:</b> Read bytes from a PhysicsFS filehandle. The file must be opened for reading.</li>
+</ul>
+
+
+
+<h3  align="center" id="nesdlfunctions">Necessary SDL Functions</h3>
+
+<p align="justify">To upload files with this new methodology, we will not be able to use the same upload functions with SDL. In this way, from now on, we must know <b>SDL_RWops</b> and all its derivatives.</p> 
+
+<p align="justify"><b>SDL_RWops</b> is a structure that provides an abstract interface to stream I/O. Applications can generally ignore the specifics of this structure's internals and treat them as opaque pointers; allowing you to use pointers to memory instead of files (though it can handle files too) for things such as images or samples. The primary advantage of this feature is that many libraries load files from the filesystem themselves, leaving you a bit stuck if you want to implement your own special file access, such as an archive format.</p> 
+
+<p align="justify">The functions we currently use should be replaced by:</p> 
+
+<ul>
+  <li><b>IMG_Load_RW</b></li>
+
+
+  <li><b>Mix_LoadWAV_RW</b></li>
+  
+  
+   <li><b>Mix_LoadMUS_RW</b></li>
+</ul>
+
+
 <h2  align="center" id="howimplement">How can I implement it?</h2>
 
 <p align="justify">If you want to use Visual Studio, nmake, or the Platform SDK, you will need <a href="https://cmake.org/download/">CMake.</a> Let's take a little break to explain what is CMake about. </p>
