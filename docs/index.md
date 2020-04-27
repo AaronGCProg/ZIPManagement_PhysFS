@@ -17,19 +17,25 @@
 
 <h2  align="center" id="physfs">We will use it</h2>
 
-<p align="justify"><b>Using PhysFS involves loading absolutely all files through this API, in a different way than conventional. That means that we must understand how the necessary functions that PhysicsFS brings.</p> 
+<p align="justify">Using PhysFS involves loading absolutely all files through this API, in a different way than conventional. That means that we must understand how the necessary functions that PhysicsFS brings.</p> 
 
 <ul>
-  <li><b>PHYSFS_init</b>: Initialize the PhysicsFS library. This must be called before any other PhysicsFS function.</li>
-  <li><b>PHYSFS_deinit</b>: Deinitialize the PhysicsFS library. This closes any files opened via PhysicsFS, blanks the search/write paths, frees memory, and invalidates all of your file handles.</li>
-  <li><b>PHYSFS_mount</b>: Add an archive or directory to the search path. If this is a duplicate, the entry is not added again, even though the function succeeds. You may not add the same archive to two different mountpoints: duplicate checking is done against the archive and not the mountpoint.</li>
-  <li><b>PHYSFS_close</b>: Close a PhysicsFS filehandle.This call is capable of failing if the operating system was buffering writes to the physical media, and, now forced to write those changes to physical media, can not store the data for some reason.</li>
+  <li><b>PHYSFS_init:</b> Initialize the PhysicsFS library. This must be called before any other PhysicsFS function.</li>
+
+
+  <li><b>PHYSFS_deinit:</b> Deinitialize the PhysicsFS library. This closes any files opened via PhysicsFS, blanks the search/write paths, frees memory, and invalidates all of your file handles.</li>
+
+
+  <li><b>PHYSFS_mount:</b> Add an archive or directory to the search path. If this is a duplicate, the entry is not added again, even though the function succeeds. You may not add the same archive to two different mountpoints: duplicate checking is done against the archive and not the mountpoint.</li>
+
+
+  <li><b>PHYSFS_close:</b> Close a PhysicsFS filehandle.This call is capable of failing if the operating system was buffering writes to the physical media, and, now forced to write those changes to physical media, can not store the data for some reason.</li>
 </ul>
 
 
 <h3  align="center" id="abmount">About Mounting</h3>
 
-<p align="justify"><b>Mounting a file is very important in an API like this, which allows you to carry out the rest of the functionalities.
+<p align="justify">Mounting a file is very important in an API like this, which allows you to carry out the rest of the functionalities.
 	
 When you mount an archive, it is added to a virtual file system...all files in all of the archives are interpolated into a single hierachical file tree. Two archives mounted at the same place (or an archive with files overlapping another mountpoint) may have overlapping files: in such a case, the file earliest in the search path is selected, and the other files are inaccessible to the application. This allows archives to be used to override previous revisions; you can use the mounting mechanism to place archives at a specific point in the file tree and prevent overlap; this is useful for downloadable mods that might trample over application data or each other, for example.
 
